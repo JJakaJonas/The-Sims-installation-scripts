@@ -1,48 +1,48 @@
 # ====================================================================
-# SIMS 3 SEMI-AUTOMATISK INSTALLATION (MED CD-KEY PROMPT)
+# SIMS 3 SEMI-AUTOMATISK INSTALLATION (WITH CD-KEY PROMPT)
 # ====================================================================
 
-\$SourceFolder = "C:\Sti\Til\Din\Sims3\Mappe" # RET DENNE STI!
+\$SourceFolder = "$PSScriptRoot" #Source folder goes here
 LogFile = "env:USERPROFILE\Desktop\Sims3_Installation_Log.txt"
 
 Start-Transcript -Path \$LogFile
 
 Write-Host "==================================================" -ForegroundColor Cyan
-Write-Host "Starter installationen. Du vil blive bedt om koder undervejs." -ForegroundColor Cyan
+Write-Host "Starting installation. You will be asked for keys along the way." -ForegroundColor Cyan
 Write-Host "==================================================" -ForegroundColor Cyan
 
 if (-not (Test-Path -Path \$SourceFolder)) {
-    Write-Error "Fejl: Kildemappen blev ikke fundet!"
+    Write-Error "Error: Folder not found!"
     Stop-Transcript
     Exit
 }
 
-# Finder dine nummererede filer (01_..., 02_...)
+# finding the nummeradet files (01_..., 02_...)
 Installers = Get-ChildItem -Path SourceFolder -Filter "*.exe" -Recurse | Sort-Object Name
 
 foreach (Installer in Installers) {
-    Write-Host "`nÅbner nu: $($Installer.Name)... Venter på din indtastning." -ForegroundColor Yellow
+    Write-Host "`nOpening: $($Installer.Name)... Waiting for you to typing." -ForegroundColor Yellow
     
-    # /s kører InstallShield i "silent" mode for de basale ting, men tillader CD-key vinduet at poppe op
+    # /s running the installation in "silent" mode for basic stuff, but it allows the CD-key popup to activate
     $Arguments = "/s" 
     
     try {
-        # Scriptet venter (-Wait) indtil den nuværende pakke er helt færdig, før den åbner den næste
+        # The script is waiting (-Wait) til the current installation is done before it runs the next one.
         $Process = Start-Process -FilePath $Installer.FullName -ArgumentList $Arguments -Wait -NoNewWindow -PassThru
         
         if ($Process.ExitCode -eq 0) {
-            Write-Host "Færdig! $($Installer.Name) er installeret." -ForegroundColor Green
+            Write-Host "Done! $($Installer.Name) is installed." -ForegroundColor Green
         } else {
-            Write-Warning "Advarsel: $($Installer.Name) lukkede med kode: $($Process.ExitCode)"
+            Write-Warning "WARNING: $($Installer.Name) closed with code: $($Process.ExitCode)"
         }
     }
     catch {
-        Write-Error "Kunne ikke starte $($Installer.Name). Fejl: $_"
+        Write-Error "Could not start $($Installer.Name). Error: $_"
     }
 }
 
 Write-Host "`n==================================================" -ForegroundColor Green
-Write-Host "Alle installere har været kørt!" -ForegroundColor Green
+Write-Host "All installers have been runned!" -ForegroundColor Green
 Write-Host "==================================================" -ForegroundColor Green
 
 Stop-Transcript

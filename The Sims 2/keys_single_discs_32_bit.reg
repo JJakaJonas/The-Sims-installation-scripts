@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00
 
-; --- THE SIMS 2 GRUNDSPIL & UDVIDELSER (32-bit Windows) ---
+; --- THE SIMS 2 BASE GAME & EXPANSIONS (32-bit Windows) ---
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2\ergc]
 @="BASE_GAME_KEY"
