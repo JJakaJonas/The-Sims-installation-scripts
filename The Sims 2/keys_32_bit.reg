@@ -1,0 +1,56 @@
+Windows Registry Editor Version 5.00
+
+; --- THE SIMS 2 BASE GAME & EXPANSIONS (32-bit Windows) ---
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2\ergc]
+@="ADD_THE_SIMS_2_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 University\ergc]
+@="ADD_UNIVERSITY_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Nightlife\ergc]
+@="ADD_NIGHTLIFE_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Open for Business\ergc]
+@="ADD_OPEN_FOR_BUSINESS_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Pets\ergc]
+@="ADD_PETS_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Seasons\ergc]
+@="ADD_SEASONS_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Bon Voyage\ergc]
+@="ADD_BON_VOYAGE_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 FreeTime\ergc]
+@="ADD_BON_FREETIME_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Apartment Life\ergc]
+@="ADD_APARTMENT_LIFE_KEY_HERE"
+
+; --- STUFF PACKS ---
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Family Fun Stuff\ergc]
+@="ADD_FAMILY_FUN_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Glamour Life Stuff\ergc]
+@="ADD_GLAMOUR_LIFE_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Celebration Stuff\ergc]
+@="ADD_CELEBRATION_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 H&M Fashion Stuff\ergc]
+@="ADD_H&M_FASHION_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Teen Style Stuff\ergc]
+@="ADD_TEEN_STYLE_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Kitchen & Bath Interior Design Stuff\ergc]
+@="ADD_KITCHEN_&_BATH_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 IKEA Home Stuff\ergc]
+@="ADD_IKEA_HOME_KEY_HERE"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Electronic Arts\EA Games\The Sims 2 Mansion & Garden Stuff\ergc]
+@="ADD_MANSION_&_GARDEN_KEY_HERE"
