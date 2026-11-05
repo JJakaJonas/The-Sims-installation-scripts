@@ -65,5 +65,3 @@
 <p>This project is open-source and available under the <strong>MIT License</strong>. Feel free to use, modify, and distribute these scripts to keep the classic Sims community alive across all generations of Windows!</p>
 
 <p align="center"><em>"Sul Sul! Happy Simming!"</em> 💎</p>
-
-```
