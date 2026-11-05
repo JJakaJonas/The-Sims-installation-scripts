@@ -68,7 +68,8 @@ MakinMagic=XXXX-XXXX-XXXX-XXXX-XXXX
 ```
 
 ### 3. Run the Installer
-Simply **double-click `installer.cmd`**. 
+Simply **double-click `installer.ps1`**. 
+Or XP-Install.cmd on Windows XP
 * The script will request administrator rights automatically.
 * Follow the on-screen prompts for each installation dialog. Once finished, your game will be fully patched, configured for widescreen, and ready to play!
 
