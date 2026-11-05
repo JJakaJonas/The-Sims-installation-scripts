@@ -1,0 +1,9 @@
+# Enter your CD keys below without spaces before or after the "=" sign:
+BaseGame=ENTER-KEY-HERE
+LivinLarge=ENTER-KEY-HERE
+HouseParty=ENTER-KEY-HERE
+HotDate=ENTER-KEY-HERE
+Vacation=ENTER-KEY-HERE
+Unleashed=ENTER-KEY-HERE
+Superstar=ENTER-KEY-HERE
+MakinMagic=ENTER-KEY-HERE
