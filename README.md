@@ -1,6 +1,3 @@
-Her er din opdaterede HTML-tekst. **The Sims 1** er nu markeret som færdig (🟢 **Ready to Use**), der er tilføjet et direkte link til mappen `The%20Sims%201`, og den fulde beskrivelse af automatiseringen (sekventiel installation, serial injection, No-CD patch, widescreen tweak og genvej) er opdateret:
-
-```html
 <div align="center">
     <h1>🎮 The Sims Legacy Installation Scripts</h1>
     <p><strong>A cross-platform automated deployment suite for running classic The Sims games flawlessly on any OS from Windows XP up to Windows 11.</strong></p>
