@@ -1,3 +1,6 @@
+Her er din opdaterede HTML-tekst. **The Sims 1** er nu markeret som færdig (🟢 **Ready to Use**), der er tilføjet et direkte link til mappen `The%20Sims%201`, og den fulde beskrivelse af automatiseringen (sekventiel installation, serial injection, No-CD patch, widescreen tweak og genvej) er opdateret:
+
+```html
 <div align="center">
     <h1>🎮 The Sims Legacy Installation Scripts</h1>
     <p><strong>A cross-platform automated deployment suite for running classic The Sims games flawlessly on any OS from Windows XP up to Windows 11.</strong></p>
@@ -31,9 +34,9 @@
     </thead>
     <tbody>
         <tr>
-            <td><strong>The Sims 1 (Complete Collection)</strong></td>
-            <td>Full sequential deployment, silent installation automation & core registry configuration for x86/x64.</td>
-            <td>🟡 <em>In Development</em></td>
+            <td><strong><a href="./The%20Sims%201">The Sims 1 (Complete Collection)</a></strong></td>
+            <td>Full sequential deployment (Base Game + all expansions), automated serial key injection, No-CD patch deployment, 1080p widescreen resolution tweak & desktop shortcut generation.</td>
+            <td>🟢 <strong>Ready to Use</strong></td>
         </tr>
         <tr>
             <td><strong><a href="./The%20Sims%202">The Sims 2 (Complete Collection)</a></strong></td>
@@ -55,13 +58,15 @@
 
 <h2>🚀 Getting Started</h2>
 <ol>
-    <li>Navigate into the directory of the specific game you wish to install (e.g., click on the <strong>The Sims 2</strong> link above).</li>
+    <li>Navigate into the directory of the specific game you wish to install (e.g., click on the <strong>The Sims 1</strong> or <strong>The Sims 2</strong> link above).</li>
     <li>Read the game-specific <code>README</code> inside that folder to structure your game media folders correctly.</li>
-    <li>Configure your personal serial keys inside the designated <code>.reg</code> files (choosing either the 32-bit or 64-bit version depending on your target OS).</li>
-    <li>Run the master <code>install.bat</code> inside that folder. The loader will automatically detect your system architecture and dispatch the correct script.</li>
+    <li>Configure your personal serial keys inside the designated configuration file (e.g., <code>Serials.txt</code> or <code>.reg</code> files depending on the game).</li>
+    <li>Run the master loader script inside that folder. The loader will automatically request administrative privileges, detect your system architecture, and dispatch the installation process.</li>
 </ol>
 
 <h2>🛡️ License</h2>
 <p>This project is open-source and available under the <strong>MIT License</strong>. Feel free to use, modify, and distribute these scripts to keep the classic Sims community alive across all generations of Windows!</p>
 
 <p align="center"><em>"Sul Sul! Happy Simming!"</em> 💎</p>
+
+```
