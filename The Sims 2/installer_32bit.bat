@@ -1,207 +1,182 @@
 @echo off
-title The Sims 2 - Master Installer
+title The Sims 2 - Chronological Master Installer Launcher (32-bit)
 
-:: Ensure script runs from its actual folder location
-pushd "%CD%"  
-cd /d "%~dp0"
-
-:: Importing all license keys first (Added .reg extension check for 32-bit)
-if exist "keys_single_discs_32_bit.reg" (
-    regedit /s "keys_single_discs_32_bit.reg"
-) else (
-    echo [WARNING] License registry file not found. Skipping registry import.
-)
-
-:: Forces Windows to bypass the expired certificate block
-set __COMPAT_LAYER=RunAsInvoker
+:: Save the root folder as a variable
+set "ROOT_DIR=%~dp0"
+cd /d "%ROOT_DIR%"
 
 echo ===================================================
-echo   INSTALLING THE SIMS 2 COLLECTION
+echo   INSTALLING THE SIMS 2 - CHRONOLOGICAL COLLECTION
 echo ===================================================
 echo.
 
-:: 01 - Base Game
-if exist "BaseGame\AutoRun.exe" (
-    echo Installing 01 - The Sims 2 Base Game...
-    start /wait "" "BaseGame\AutoRun.exe" /s /v"/qn"
-) else ( echo [MISSING] Base Game folder or setup.exe not found! )
-
-:: 02 - University
-if exist "University\AutoRun.exe" (
-    echo Installing 02 - University...
-    start /wait "" "University\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] University is not available. )
-
-if exist "Patches\sims2ep1_patch.exe" (
-    echo Patching University...
-    start /wait "" "Patches\sims2ep1_patch.exe" /s
+:: 01 - The Sims 2 (Base Game)
+if exist "%ROOT_DIR%BaseGame\run_install.bat" (
+    echo [01/18] Launching Base Game...
+    cd /d "%ROOT_DIR%BaseGame"
+    call "run_install.bat"
 )
 
-:: 03 - Nightlife
-if exist "Nightlife\AutoRun.exe" (
-    echo Installing 03 - Nightlife...
-    start /wait "" "Nightlife\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Nightlife is not available. )
-
-if exist "Patches\sims2ep2_patch.exe" (
-    echo Patching Nightlife...
-    start /wait "" "Patches\sims2ep2_patch.exe" /s
+:: 02 - The Sims 2 University (EP1)
+if exist "%ROOT_DIR%University\run_install.bat" (
+    echo [02/18] Launching University...
+    cd /d "%ROOT_DIR%University"
+    call "run_install.bat"
 )
 
-:: 04 - Festive Holiday
-if exist "FestiveHoliday\setup.exe" (
-    echo Installing 04 - Festive Holiday...
-    start /wait "" "FestiveHoliday\setup.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Festive Holiday is not available. )
-
-:: 05 - Open for Business
-if exist "OpenForBusiness\AutoRun.exe" (
-    echo Installing 05 - Open for Business...
-    start /wait "" "OpenForBusiness\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Open for Business is not available. )
-
-if exist "Patches\sims2ep3_patch.exe" (
-    echo Patching Open for Business...
-    start /wait "" "Patches\sims2ep3_patch.exe" /s
+:: 03 - The Sims 2 Nightlife (EP2)
+if exist "%ROOT_DIR%Nightlife\run_install.bat" (
+    echo [03/18] Launching Nightlife...
+    cd /d "%ROOT_DIR%Nightlife"
+    call "run_install.bat"
 )
 
-:: 06 - Family Fun Stuff
-if exist "FamilyFun\AutoRun.exe" (
-    echo Installing 06 - Family Fun Stuff...
-    start /wait "" "FamilyFun\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Family Fun Stuff is not available. )
-
-:: 07 - Glamour Life Stuff
-if exist "GlamourLife\AutoRun.exe" (
-    echo Installing 07 - Glamour Life Stuff...
-    start /wait "" "GlamourLife\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Glamour Life Stuff is not available. )
-
-:: 08 - Pets
-if exist "Pets\AutoRun.exe" (
-    echo Installing 08 - Pets...
-    start /wait "" "Pets\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Pets is not available. )
-
-if exist "Patches\sims2ep4_patch.exe" (
-    echo Patching Pets...
-    start /wait "" "Patches\sims2ep4_patch.exe" /s
+:: 04 - The Sims 2 Family Fun Stuff (SP1)
+if exist "%ROOT_DIR%FamilyFun\run_install.bat" (
+    echo [04/18] Launching Family Fun Stuff...
+    cd /d "%ROOT_DIR%FamilyFun"
+    call "run_install.bat"
 )
 
-:: 09 - Seasons
-if exist "Seasons\AutoRun.exe" (
-    echo Installing 09 - Seasons...
-    start /wait "" "Seasons\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Seasons is not available. )
-
-if exist "Patches\sims2ep5_patch.exe" (
-    echo Patching Seasons...
-    start /wait "" "Patches\sims2ep5_patch.exe" /s
+:: 05 - The Sims 2 Open for Business (EP3)
+if exist "%ROOT_DIR%BestOfBusiness\run_install.bat" (
+    echo [05/18] Launching Open for Business...
+    cd /d "%ROOT_DIR%BestOfBusiness"
+    call "run_install.bat"
 )
 
-:: 10 - Celebration Stuff
-if exist "Celebration\AutoRun.exe" (
-    echo Installing 10 - Celebration Stuff...
-    start /wait "" "Celebration\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Celebration Stuff is not available. )
-
-:: 11 - H&M Fashion Stuff
-if exist "HM_Fashion\AutoRun.exe" (
-    echo Installing 11 - H^&M Fashion Stuff...
-    start /wait "" "HM_Fashion\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] H^&M Fashion Stuff is not available. )
-
-:: 12 - Bon Voyage
-if exist "BonVoyage\AutoRun.exe" (
-    echo Installing 12 - Bon Voyage...
-    start /wait "" "BonVoyage\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Bon Voyage is not available. )
-
-if exist "Patches\sims2ep6_patch.exe" (
-    echo Patching Bon Voyage...
-    start /wait "" "Patches\sims2ep6_patch.exe" /s
+:: 06 - The Sims 2 Glamour Life Stuff (SP2)
+if exist "%ROOT_DIR%GlamourLife\run_install.bat" (
+    echo [06/18] Launching Glamour Life Stuff...
+    cd /d "%ROOT_DIR%GlamourLife"
+    call "run_install.bat"
 )
 
-:: 13 - Teen Style Stuff
-if exist "TeenStyle\AutoRun.exe" (
-    echo Installing 13 - Teen Style Stuff...
-    start /wait "" "TeenStyle\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Teen Style Stuff is not available. )
+:: 07 - The Sims 2 Festive Holiday / Christmas Stuff
+if exist "%ROOT_DIR%FestiveHoliday\run_install.bat" (
+    echo [07/18] Launching Festive Holiday Stuff...
+    cd /d "%ROOT_DIR%FestiveHoliday"
+    call "run_install.bat"
+) 
 
-:: 14 - FreeTime
-if exist "FreeTime\AutoRun.exe" (
-    echo Installing 14 - FreeTime...
-    start /wait "" "FreeTime\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] FreeTime is not available. )
-
-if exist "Patches\sims2ep7_patch.exe" (
-    echo Patching FreeTime...
-    start /wait "" "Patches\sims2ep7_patch.exe" /s
+:: 08 - The Sims 2 Pets (EP4)
+if exist "%ROOT_DIR%Pets\run_install.bat" (
+    echo [08/18] Launching Pets...
+    cd /d "%ROOT_DIR%Pets"
+    call "run_install.bat"
 )
 
-:: 15 - Kitchen & Bath Stuff
-if exist "KitchenBath\AutoRun.exe" (
-    echo Installing 15 - Kitchen ^& Bath Stuff...
-    start /wait "" "KitchenBath\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Kitchen ^& Bath Stuff is not available. )
-
-:: 16 - IKEA Home Stuff
-if exist "IkeaHome\AutoRun.exe" (
-    echo Installing 16 - IKEA Home Stuff...
-    start /wait "" "IkeaHome\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] IKEA Home Stuff is not available. )
-
-:: 17 - Apartment Life
-if exist "ApartmentLife\AutoRun.exe" (
-    echo Installing 17 - Apartment Life...
-    start /wait "" "ApartmentLife\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Apartment Life is not available. )
-
-if exist "Patches\sims2ep8_patch.exe" (
-    echo Patching Apartment Life...
-    start /wait "" "Patches\sims2ep8_patch.exe" /s
+:: 09 - The Sims 2 Celebration Stuff (SP3)
+if exist "%ROOT_DIR%Celebration\run_install.bat" (
+    echo [09/18] Launching Celebration Stuff...
+    cd /d "%ROOT_DIR%Celebration"
+    call "run_install.bat"
 )
 
-:: 18 - Mansion & Garden Stuff
-if exist "MansionGarden\AutoRun.exe" (
-    echo Installing 18 - Mansion ^& Garden Stuff...
-    start /wait "" "MansionGarden\AutoRun.exe" /s /v"/qn"
-) else ( echo [SKIPPED] Mansion ^& Garden Stuff is not available. )
-
-if exist "Patches\sims2sp9_patch.exe" (
-    echo Patching Mansion ^& Garden...
-    start /wait "" "Patches\sims2sp9_patch.exe" /s
+:: 10 - The Sims 2 Seasons (EP5)
+if exist "%ROOT_DIR%Seasons\run_install.bat" (
+    echo [10/18] Launching Seasons...
+    cd /d "%ROOT_DIR%Seasons"
+    call "run_install.bat"
 )
 
-:: Extra Content
+:: 11 - The Sims 2 H&M Fashion Stuff (SP4)
+if exist "%ROOT_DIR%HMFashion\run_install.bat" (
+    echo [11/18] Launching H^&M Fashion Stuff...
+    cd /d "%ROOT_DIR%HMFashion"
+    call "run_install.bat"
+)
+
+:: 12 - The Sims 2 Bon Voyage (EP6)
+if exist "%ROOT_DIR%BonVoyage\run_install.bat" (
+    echo [12/18] Launching Bon Voyage...
+    cd /d "%ROOT_DIR%BonVoyage"
+    call "run_install.bat"
+)
+
+:: 13 - The Sims 2 Teen Style Stuff (SP5)
+if exist "%ROOT_DIR%TeenStyle\run_install.bat" (
+    echo [13/18] Launching Teen Style Stuff...
+    cd /d "%ROOT_DIR%TeenStyle"
+    call "run_install.bat"
+)
+
+:: 14 - The Sims 2 Kitchen & Bath Interior Design Stuff (SP6)
+if exist "%ROOT_DIR%KitchenBath\run_install.bat" (
+    echo [14/18] Launching Kitchen ^& Bath Stuff...
+    cd /d "%ROOT_DIR%KitchenBath"
+    call "run_install.bat"
+)
+
+:: 15 - The Sims 2 FreeTime (EP7)
+if exist "%ROOT_DIR%FreeTime\run_install.bat" (
+    echo [15/18] Launching FreeTime...
+    cd /d "%ROOT_DIR%FreeTime"
+    call "run_install.bat"
+)
+
+:: 16 - The Sims 2 IKEA Home Stuff (SP7)
+if exist "%ROOT_DIR%IkeaHome\run_install.bat" (
+    echo [16/18] Launching IKEA Home Stuff...
+    cd /d "%ROOT_DIR%IkeaHome"
+    call "run_install.bat"
+)
+
+:: 17 - The Sims 2 Apartment Life (EP8)
+if exist "%ROOT_DIR%ApartmentLife\run_install.bat" (
+    echo [17/18] Launching Apartment Life...
+    cd /d "%ROOT_DIR%ApartmentLife"
+    call "run_install.bat"
+)
+
+:: 18 - The Sims 2 Mansion & Garden Stuff (SP9)
+if exist "%ROOT_DIR%MansionGarden\run_install.bat" (
+    echo [18/18] Launching Mansion ^& Garden Stuff...
+    cd /d "%ROOT_DIR%MansionGarden"
+    call "run_install.bat"
+)
+
+echo.
+echo ===================================================
+echo   COPYING BONUS CONTENT
+echo ===================================================
+echo.
+
+:: Bonus Content (Copied from root)
+cd /d "%ROOT_DIR%"
 if exist "Content\EA Games" (
-    echo Copying extra content...
+    echo Copying bonus content to Documents folder...
     robocopy "Content\EA Games" "%USERPROFILE%\Documents\EA Games" /E /IS /R:1 /W:1
 )
 
 echo.
 echo ===================================================
-echo   APPLYING FIXES ^& GRAPHICS MODIFICATIONS
+echo   APPLYING FIXES AND GRAPHICS MODIFICATIONS
 echo ===================================================
 echo.
 
-:: Copy and overwrite fix file to Mansion & Garden Stuff
-echo Applying No-CD executable...
-if exist "Fix\Sims2EP9.exe" (
-    xcopy "Fix\Sims2EP9.exe" "%ProgramFiles%\EA GAMES\The Sims 2 Mansion and Garden Stuff\TSBin\" /Y /R
+:: Detect install path in the 32-bit Program Files environment
+set "TARGET_DIR=%ProgramFiles%\EA GAMES\The Sims 2 Mansion and Garden Stuff"
+if not exist "%TARGET_DIR%\" (
+    set "TARGET_DIR=%ProgramFiles%\EA GAMES\The Sims 2 Fun with Pets\SP9"
+)
+
+:: Jump to local Fix folder and copy files over
+if exist "%ROOT_DIR%Fix" (
+    cd /d "%ROOT_DIR%Fix"
+    
+    echo Applying No-CD executable to: %TARGET_DIR%
+    if exist "Sims2EP9.exe" xcopy "Sims2EP9.exe" "%TARGET_DIR%\TSBin\" /Y /R
+
+    echo Applying graphics fix ^(Graphics Rules^)...
+    if exist "Graphics Rules.sgr" xcopy "Graphics Rules.sgr" "%TARGET_DIR%\TSData\Res\Config\" /Y /R
+    if exist "Graphics Rules.sgr" xcopy "Graphics Rules.sgr" "%TARGET_DIR%\TSData\Res\CsConfig\" /Y /R
 ) else (
-    echo [WARNING] Fix file (Sims2EP9.exe) not found in script folder.
-)
-
-:: Copy and overwrite modern Graphics Rules fix
-echo Applying modern graphics fix for Windows 11...
-if exist "Fix\Graphics Rules.sgr" (
-    xcopy "Fix\Graphics Rules.sgr" "%ProgramFiles%\EA GAMES\The Sims 2 Mansion and Garden Stuff\TSData\Res\Config\" /Y /R
-    xcopy "Fix\Graphics Rules.sgr" "%ProgramFiles%\EA GAMES\The Sims 2 Mansion and Garden Stuff\TSData\Res\CsConfig\" /Y /R
+    echo [WARNING] Fix folder was not found in root. Skipping game patches.
 )
 
 echo.
 echo ===================================================
-echo   INSTALLATION IS DONE.. ENJOY PLAYING.
+echo   INSTALLATION IS COMPLETELY FINISHED!
 echo ===================================================
 pause
