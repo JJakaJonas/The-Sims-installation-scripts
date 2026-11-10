@@ -17,6 +17,10 @@ pushd "%CD%"
 cd /d "%~dp0"
 :: ========================================================
 
+echo Testing if help files are present 
+call "Help_files.bat"
+ping -n 6 127.0.0.1 >nul
+
 set __COMPAT_LAYER=RunAsInvoker
 echo Checking system architecture...
 

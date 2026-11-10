@@ -18,18 +18,23 @@ if exist "%ROOT_DIR%BaseGame\run_install.bat" (
 )
 
 :: 02 - The Sims 2 University (EP1)
-if exist "%ROOT_DIR%University\run_install.bat" (
-    echo [02/18] Launching University...
-    cd /d "%ROOT_DIR%University"
-    call "run_install.bat"
-)
+if not exist "%ROOT_DIR%University\Disc1.iso" goto SkipUniversity
+echo [02/18] Launching University...
+cd /d "%ROOT_DIR%University"
+call "disc_mount_changer.bat"
+:: Windows XP pause på 5 sekunder
+ping -n 6 127.0.0.1 >nul
+:SkipUniversity
 
 :: 03 - The Sims 2 Nightlife (EP2)
-if exist "%ROOT_DIR%Nightlife\run_install.bat" (
-    echo [03/18] Launching Nightlife...
-    cd /d "%ROOT_DIR%Nightlife"
-    call "run_install.bat"
-)
+if not exist "%ROOT_DIR%Nightlife\Disc1.iso" goto SkipNightlife
+echo [02/18] Launching Nightlife...
+cd /d "%ROOT_DIR%Nightlife"
+call "disc_mount_changer.bat"
+:: Windows XP pause på 5 sekunder
+ping -n 6 127.0.0.1 >nul
+:SkipNightlife
+
 
 :: 04 - The Sims 2 Family Fun Stuff (SP1)
 if exist "%ROOT_DIR%FamilyFun\run_install.bat" (

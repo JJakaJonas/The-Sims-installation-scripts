@@ -1,10 +1,10 @@
 @echo off
-:: Lock the working directory to the sub-folder location
+:: Sikrer at arbejdsmappen er lige præcis her, hvor filen ligger
 cd /d "%~dp0"
 
-echo Launching installation...
+echo Starter installationen...
 
-:: Start the installation file
+:: Start installationsfilen (vi tjekker efterfølgende om den kører)
 if exist "AutoRun.exe" (
     start "" "AutoRun.exe"
     set "EXE_NAME=AutoRun.exe"
@@ -17,30 +17,31 @@ if exist "setup.exe" (
     goto wait_loop
 )
 
-echo [ERROR] Neither AutoRun.exe nor setup.exe was found in this directory!
+echo [ERROR] Fandt hverken AutoRun.exe eller setup.exe!
 pause
 exit /b
 
 :wait_loop
-:: Give the process 4 seconds to register in Windows
+:: Giv programmet 4 sekunder til overhovedet at starte op og dukke op i Windows
 timeout /t 4 >nul
 
 echo.
 echo ===================================================
-echo   WAITING FOR %EXE_NAME% TO CLOSE...
+echo   VENTER PAA AT %EXE_NAME% LUKKER...
 echo ===================================================
-echo DO NOT close this black window. It will exit automatically
-echo once you are completely finished with the setup wizard.
+echo Luk IKKE dette sorte vindue. Det lukker selv,
+echo naar du er helt faerdig med installationsguiden.
 echo.
 
 :loop
-:: Check Windows tasklist to see if process is still alive
+:: Spørg Windows direkte om processen stadig er aktiv i Joblisten
 tasklist /FI "IMAGENAME eq %EXE_NAME%" 2>nul | find /I "%EXE_NAME%" >nul
 if %errorlevel% equ 0 (
+    :: Processen kører stadig. Vent 3 sekunder og tjek igen.
     timeout /t 3 >nul
     goto loop
 )
 
-echo [INFO] %EXE_NAME% has closed! Handing control back...
+echo [INFO] %EXE_NAME% er nu lukket ned!
 timeout /t 2 >nul
 exit /b
