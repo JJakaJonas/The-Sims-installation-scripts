@@ -1,11 +1,11 @@
 <h1>The Sims 2 Complete Collection - Automatic Installer</h1>
 
-<p>This open-source script automates the full installation of The Sims 2 and all its expansions/stuff packs on modern systems. It automatically bypasses expired certificate blocks, handles user privileges, applies a modern widescreen fix, and deploys everything in the strict chronological order with a single click.</p>
+<p>This open-source script automates the full installation of The Sims 2 and all its expansions/stuff packs on modern systems. It automatically handles user privileges, applies a modern widescreen fix, and deploys everything in the strict chronological order with a single click.</p>
 
 <h2>Features</h2>
 <ul>
     <li><strong>Zero-Configuration Graphics:</strong> Includes the Universal Legacy Edition <code>Graphics Rules.sgr</code> for instant 1080p/4K support.</li>
-    <li><strong>Security Bypass:</strong> Automatically overrides the Windows 11 expired digital signature blocks using non-invasive environment layers.</li>
+    <li><strong>Security Bypass:</
     <li><strong>Architecture Detection:</strong> Automatically routes the setup through 32-bit or 64-bit processes depending on your OS.</li>
 </ul>
 
@@ -23,13 +23,6 @@
         Download this script repository and place all the files directly into the root folder where your game installation folders (like <code>BaseGame</code>) are located.
     </li>
     <li>
-        <strong>Add your license keys:</strong><br>
-        Open either <code>keys_single_discs_64_bit.reg</code> or <code>keys_single_discs_32_bit.reg</code> in Notepad (depending on your system architecture), insert your serial keys where indicated, and save the file.
-        <blockquote>
-            <strong>Warning:</strong> The installation process will fail or prompt for keys manually if you do not update the registry files first.
-        </blockquote>
-    </li>
-    <li>
         <strong>Verify game modifications:</strong><br>
         The universal <code>Graphics Rules.sgr</code> and the No-CD executable (<code>Sims2EP9.exe</code>) are already included inside the <code>Fix</code> folder. No further action is required here.
     </li>
@@ -40,7 +33,6 @@
         <ul>
             <li>Requests administrative privileges automatically.</li>
             <li>Detects your system architecture (32-bit vs. 64-bit) and triggers the correct routine.</li>
-            <li>Imports your customized license keys silently.</li>
             <li>Installs the base game, expansions, stuff packs, and patches sequentially.</li>
             <li>Applies the widescreen fixes and copies extra Store content directly to your Documents folder.</li>
         </ul>
@@ -70,9 +62,7 @@ The Sims 2 Installation Folder/
 │
 ├── install.bat             &lt;-- DOUBLE-CLICK THIS TO START
 ├── installer_32bit.bat
-├── installer_64bit.bat
-├── keys_single_discs_32_bit.reg
-└── keys_single_discs_64_bit.reg
+└── installer_64bit.bat
 </code></pre>
 
 <p>Have fun playing!</p>

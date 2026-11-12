@@ -17,11 +17,12 @@ pushd "%CD%"
 cd /d "%~dp0"
 :: ========================================================
 
-echo Testing if help files are present 
-call "Help_files.bat"
-ping -n 6 127.0.0.1 >nul
+:: Not needed
+::echo Testing if help files are present 
+::call "Help_files.bat"
+::ping -n 6 127.0.0.1 >nul
 
-set __COMPAT_LAYER=RunAsInvoker
+::set __COMPAT_LAYER=RunAsInvoker :: Not needed for now
 echo Checking system architecture...
 
 :: Check if the operating system is 64-bit
@@ -31,11 +32,11 @@ if "%PROCESSOR_ARCHITEW6432%"=="AMD64" goto 64bit
 :32bit
 echo This is a 32-bit system.
 :: Importing all license keys first (Added .reg extension check for 32-bit)
-if exist "keys_single_discs_32_bit.reg" (
-    regedit /s "keys_single_discs_32_bit.reg"
-) else (
-    echo [WARNING] License registry file not found. Skipping registry import.
-)
+::if exist "keys_single_discs_32_bit.reg" (
+::    regedit /s "keys_single_discs_32_bit.reg"
+::) else (
+::    echo [WARNING] License registry file not found. Skipping registry import.
+::)
 echo Launching 32-bit installation script...
 call "installer_32bit.bat"
 goto end
@@ -43,11 +44,11 @@ goto end
 :64bit
 echo This is a 64-bit system.
 :: Importing all license keys first (Added .reg extension check)
-if exist "keys_single_discs_64_bit.reg" (
-    regedit /s "keys_single_discs_64_bit.reg"
-) else (
-    echo [WARNING] License registry file not found. Skipping registry import.
-)
+::if exist "keys_single_discs_64_bit.reg" (
+::    regedit /s "keys_single_discs_64_bit.reg"
+::) else (
+::    echo [WARNING] License registry file not found. Skipping registry import.
+::)
 echo Launching 64-bit installation script...
 call "installer_64bit.bat"
 goto end

@@ -18,24 +18,13 @@ if exist "%ROOT_DIR%BaseGame\run_install.bat" (
 )
 
 :: 02 - The Sims 2 University (EP1)
-if not exist "%ROOT_DIR%University\Disc1.iso" goto SkipUniversity
-echo [02/18] Launching University...
-cd /d "%ROOT_DIR%University"
-call "disc_mount_changer.bat"
-:: Windows XP pause på 5 sekunder
-ping -n 6 127.0.0.1 >nul
-:SkipUniversity
+if exist "%ROOT_DIR%University\run_install.bat" (
+    echo [03/18] Launching University...
+    cd /d "%ROOT_DIR%University"
+    call "run_install.bat"
+)
 
 :: 03 - The Sims 2 Nightlife (EP2)
-if not exist "%ROOT_DIR%Nightlife\Disc1.iso" goto SkipNightlife
-echo [02/18] Launching Nightlife...
-cd /d "%ROOT_DIR%Nightlife"
-call "disc_mount_changer.bat"
-:: Windows XP pause på 5 sekunder
-ping -n 6 127.0.0.1 >nul
-:SkipNightlife
-
-:: 
 if exist "%ROOT_DIR%Nightlife\run_install.bat" (
     echo [03/18] Launching Nightlife...
     cd /d "%ROOT_DIR%Nightlife"
@@ -166,25 +155,56 @@ echo   APPLYING FIXES AND GRAPHICS MODIFICATIONS
 echo ===================================================
 echo.
 
-:: Detect install path in the 64-bit Program Files (x86) environment
-set "TARGET_DIR=%ProgramFiles(x86)%\EA GAMES\The Sims 2 Mansion and Garden Stuff"
-if not exist "%TARGET_DIR%\" (
-    set "TARGET_DIR=%ProgramFiles(x86)%\EA GAMES\The Sims 2 Fun with Pets\SP9"
+set "TARGET_DIR="
+
+REM 1. Søger via App Paths (den mest pålidelige metode til selve exe-filen)
+for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\Sims2EP9.exe" /v "Path" 2^>nul') do (
+    set "TARGET_DIR=%%B"
 )
 
-:: Jump to local Fix folder and copy files over
-if exist "%ROOT_DIR%Fix" (
-    cd /d "%ROOT_DIR%Fix"
+REM 2. Hvis ikke fundet, søger den efter Mansion & Garden Stuff
+if not defined TARGET_DIR (
+    for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\WOW6432Node\EA GAMES\The Sims 2 Mansion and Garden Stuff" /v "Install Dir" 2^>nul') do (
+        set "TARGET_DIR=%%B"
+    )
+)
+
+REM 3. Hvis ikke fundet, søger den efter Fun with Pets
+if not defined TARGET_DIR (
+    for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\WOW6432Node\EA GAMES\The Sims 2 Fun with Pets" /v "Install Dir" 2^>nul') do (
+        set "TARGET_DIR=%%B\SP9"
+    )
+)
+
+REM 4. Fjerner eventuelle dobbelte skråstreger til sidst i stien
+if defined TARGET_DIR (
+    if "%TARGET_DIR:~-1%"=="\" set "TARGET_DIR=%TARGET_DIR:~0,-1%"
+)
+
+REM 5. Viser status og overfører filer UDEN >nul så man kan se eventuelle fejl
+if defined TARGET_DIR (
+    echo Fund folder: "%TARGET_DIR%"
     
-    echo Applying No-CD executable to: %TARGET_DIR%
-    if exist "Sims2EP9.exe" xcopy "Sims2EP9.exe" "%TARGET_DIR%\TSBin\" /Y /R
+    if exist "%~dp0fix\Sims2EP9.exe" (
+        echo Copying Sims2EP9.exe...
+        xcopy "%~dp0fix\Sims2EP9.exe" "%TARGET_DIR%\TSBin\" /Y /I /R
+    ) else (
+        echo ERROR: Did not find "%~dp0fix\Sims2EP9.exe"
+    )
 
-    echo Applying graphics fix ^(Graphics Rules^)...
-    if exist "Graphics Rules.sgr" xcopy "Graphics Rules.sgr" "%TARGET_DIR%\TSData\Res\Config\" /Y /R
-    if exist "Graphics Rules.sgr" xcopy "Graphics Rules.sgr" "%TARGET_DIR%\TSData\Res\CsConfig\" /Y /R
+    if exist "%~dp0fix\Graphics Rules.sgr" (
+        echo Copying Graphics Rules.sgr...
+        xcopy "%~dp0fix\Graphics Rules.sgr" "%TARGET_DIR%\TSData\Res\Config\" /Y /I /R
+        if exist "%TARGET_DIR%\TSData\Res\CSConfig\" (
+            xcopy "%~dp0fix\Graphics Rules.sgr" "%TARGET_DIR%\TSData\Res\CSConfig\" /Y /I /R
+        )
+    ) else (
+        echo ERROR: Did not find "%~dp0fix\Graphics Rules.sgr"
+    )
 ) else (
-    echo [WARNING] Fix folder was not found in root. Skipping game patches.
+    echo WARNING: Could not find The Sims 2 in the registry database.
 )
+pause
 
 echo.
 echo ===================================================
